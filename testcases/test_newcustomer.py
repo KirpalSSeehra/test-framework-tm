@@ -14,8 +14,8 @@ class TestNewCustomer():
 
         # Accept cookies
         hp.click_cookies()
-        # Search for iphone
-        hp.search_device("Oppo")
+        # Search for device
+        hp.search_device("Samsung")
 
         # Select first carousel item
         cs.select_device()
