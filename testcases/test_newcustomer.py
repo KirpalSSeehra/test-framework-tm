@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.tm_homepage import HomePage
 from pages.tm_catalogue_search import CatalogueSearch
 
+
 @pytest.mark.usefixtures("setup")
 class TestNewCustomer():
     def test_purchase_device(self):
@@ -15,7 +16,7 @@ class TestNewCustomer():
         # Accept cookies
         hp.click_cookies()
         # Search for device
-        hp.search_device("Samsung")
+        hp.search_device("iphone 14")
 
         # Select first carousel item
         cs.select_device()
