@@ -32,7 +32,7 @@ class TestNewCustomer():
         time.sleep(8)
         #
         # Full insurance click and continue modal
-        full_insur = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='tm-insurance-content']/div[2]/fieldset/div/div/div[2]/input")))
+        full_insur = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='tm-insurance-content']/div[2]/div[3]/div[2]/div[5]/fieldset/div/div/div[2]/input")))
         full_insur.click()
         continue_modal = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='tm-insurance-content']/div[3]/div[2]/div[1]")))
         continue_modal.click()
