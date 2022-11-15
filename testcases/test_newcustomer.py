@@ -15,8 +15,15 @@ class TestNewCustomer():
 
         # Accept cookies
         hp.click_cookies()
+
+        # Scroll down to bottom of page
+        hp.page_scroll()
+
         # Search for device
         hp.search_device("iphone 14")
+
+        # # Scroll down to bottom of page
+        cs.page_scroll()
 
         # Select first carousel item
         cs.select_device()
