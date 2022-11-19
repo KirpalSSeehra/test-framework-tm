@@ -13,10 +13,8 @@ class ProductDescriptionPage(BaseDriver):
     def click_add_to_basket(self):
         add_basket = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='emulate-button-pay-monthly']")))
         add_basket.click()
-        #time.sleep(6)
 
     def select_type_of_customer(self):
         new_cust = self.wait.until(
             EC.element_to_be_clickable((By.XPATH, "//button[contains(@data-bind, 'click: isNewCustomer')]")))
         new_cust.click()
-        #time.sleep(8)

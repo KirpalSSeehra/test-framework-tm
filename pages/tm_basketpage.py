@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_driver import BaseDriver
@@ -26,6 +24,5 @@ class BasketPage(BaseDriver):
         check = self.wait.until(
             EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/main/div[5]/div[2]/div[2]/ul/li/button")))
         check.click()
-        #time.sleep(8)
 
 
