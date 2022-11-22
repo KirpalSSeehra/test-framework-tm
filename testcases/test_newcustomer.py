@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from pages.tm_basketpage import BasketPage
@@ -22,7 +24,7 @@ class TestNewCustomer():
         # hp.page_scroll()
 
         # Search for device
-        hp.search_device("iphone 14")
+        hp.search_device("iphone 13")
 
         # # Scroll down to bottom of page
         # cs.page_scroll()
@@ -38,6 +40,9 @@ class TestNewCustomer():
 
         # Select insurance
         bp.select_insurance()
+
+        # Change contract
+        # bp.change_phone_contract()
 
         # checkout button
         bp.click_checkout()
