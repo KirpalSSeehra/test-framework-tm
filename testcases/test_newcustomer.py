@@ -32,6 +32,15 @@ class TestNewCustomer():
         # Select first carousel item
         cs.select_device()
 
+        # Zoom out of page
+        # pdp.page_zoom()
+
+        # Select device colour
+        # pdp.select_device_colour()
+
+        # Select device storage
+        # pdp.select_device_storage()
+
         # Add to basket
         pdp.click_add_to_basket()
 
@@ -46,4 +55,4 @@ class TestNewCustomer():
 
         # checkout button
         bp.click_checkout()
-
+        time.sleep(5)

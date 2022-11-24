@@ -19,4 +19,9 @@ class BaseDriver:
         time.sleep(4)
 
 
+    def page_zoom(self):
+        pageZoom = self.driver.execute_script("document.body.style.zoom= '67%'")
+
+
+
 
