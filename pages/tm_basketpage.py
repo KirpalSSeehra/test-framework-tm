@@ -19,6 +19,8 @@ class BasketPage(BaseDriver):
             EC.element_to_be_clickable((By.XPATH, "//*[@id='tm-insurance-content']/div[3]/div[2]/div[1]")))
         continue_modal.click()
 
+
+    # Select change device contract
     def change_phone_contract(self):
         change_phone = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#maincontent > div.columns > div.column.main > div.cart-container > div.cart > div > div.active > div:nth-child(2) > div.device-payment > a:nth-child(2)")))
         change_phone.click()
@@ -26,7 +28,5 @@ class BasketPage(BaseDriver):
     # Click checkout
     def click_checkout(self):
         check = self.wait.until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/main/div[5]/div[2]/div[2]/ul/li/button")))
+            EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/main/div[5]/div[2]/div[2]/ul/li/button")))
         check.click()
-
-

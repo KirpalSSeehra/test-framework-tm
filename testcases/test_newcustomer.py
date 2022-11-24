@@ -3,6 +3,7 @@ import time
 import pytest
 
 from pages.tm_basketpage import BasketPage
+from pages.tm_checkoutpage import CheckoutPage
 from pages.tm_homepage import HomePage
 from pages.tm_catalogue_search import CatalogueSearch
 from pages.tm_product_description_page import ProductDescriptionPage
@@ -16,6 +17,7 @@ class TestNewCustomer():
         cs = CatalogueSearch(self.driver, self.wait)
         pdp = ProductDescriptionPage(self.driver, self.wait)
         bp = BasketPage(self.driver, self.wait)
+        co = CheckoutPage(self.driver, self.wait)
 
         # Accept cookies
         hp.click_cookies()
@@ -55,4 +57,34 @@ class TestNewCustomer():
 
         # checkout button
         bp.click_checkout()
+
+        # Enter email address
+        co.enter_email_address()
+
+        # Confirm email address
+        co.confirm_email_address()
+
+        # Select title
+        co.select_title()
+
+        # Enter firstname
+        co.enter_firstname()
+
+        # Enter lastname
+        co.enter_lastname()
+
+        # Enter DOB
+        co.enter_dob()
+
+        time.sleep(2)
+
+        # Check Account Type Selected
+        # co.check_type_of_account_selected()
+
+        # Select Account Type
+        co.select_type_of_account()
+
+        # Enter Contact Number
+        co.enter_contact_number()
+
         time.sleep(5)
