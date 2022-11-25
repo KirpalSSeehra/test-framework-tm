@@ -17,9 +17,9 @@ class HomePage(BaseDriver):
         clickcookies.click()
 
     # Search for iphone
-    def search_device(self, searchDevice):
-        searchdevice = self.wait.until(EC.element_to_be_clickable((By.ID, "search")))
-        searchdevice.send_keys(searchDevice)
-        searchdevice.send_keys(Keys.ENTER)
+    def search_device(self, searchdevice):
+        search_dev = self.wait.until(EC.element_to_be_clickable((By.ID, "search")))
+        search_dev.send_keys(searchdevice)
+        search_dev.send_keys(Keys.ENTER)
 
 

@@ -26,7 +26,7 @@ class TestNewCustomer():
         # hp.page_scroll()
 
         # Search for device
-        hp.search_device("iphone 13")
+        hp.search_device("iphone 12")
 
         # # Scroll down to bottom of page
         # cs.page_scroll()
@@ -59,22 +59,22 @@ class TestNewCustomer():
         bp.click_checkout()
 
         # Enter email address
-        co.enter_email_address()
+        co.enter_email_address("kirpal-seehra@hotmail.co.uk")
 
         # Confirm email address
-        co.confirm_email_address()
+        co.confirm_email_address("kirpal-seehra@hotmail.co.uk")
 
         # Select title
         co.select_title()
 
         # Enter firstname
-        co.enter_firstname()
+        co.enter_firstname("Kirpal")
 
         # Enter lastname
-        co.enter_lastname()
+        co.enter_lastname("Seehra")
 
         # Enter DOB
-        co.enter_dob()
+        co.enter_dob("03", "10", "1994")
 
         time.sleep(2)
 
@@ -85,6 +85,6 @@ class TestNewCustomer():
         co.select_type_of_account()
 
         # Enter Contact Number
-        co.enter_contact_number()
+        co.enter_contact_number("07940490912")
 
         time.sleep(5)
