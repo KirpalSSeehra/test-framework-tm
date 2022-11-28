@@ -28,5 +28,5 @@ class BasketPage(BaseDriver):
     # Click checkout
     def click_checkout(self):
         check = self.wait.until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/main/div[5]/div[2]/div[2]/ul/li/button")))
+            EC.element_to_be_clickable((By.XPATH, "//button[@title='Go to checkout']")))
         check.click()

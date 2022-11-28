@@ -76,8 +76,6 @@ class TestNewCustomer():
         # Enter DOB
         co.enter_dob("03", "10", "1994")
 
-        time.sleep(2)
-
         # Check Account Type Selected
         # co.check_type_of_account_selected()
 
@@ -86,5 +84,9 @@ class TestNewCustomer():
 
         # Enter Contact Number
         co.enter_contact_number("07940490912")
+
+        # Enter Address and find address
+        co.enter_address("44", "IG3 9JG")
+        co.find_address()
 
         time.sleep(5)

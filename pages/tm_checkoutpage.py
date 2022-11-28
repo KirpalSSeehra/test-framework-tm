@@ -45,8 +45,22 @@ class CheckoutPage(BaseDriver):
         print(check_account.is_selected())
 
     def select_type_of_account(self):
-        select_account = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//label[@for='6']"))).click()
+        select_account = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//div//label[contains(text(), 'Business')]")))
+        select_account.click()
 
     def enter_contact_number(self, contactno):
         contact_number = self.wait.until(EC.element_to_be_clickable((By.NAME, "customer[tm_contact_number]")))
         contact_number.send_keys(contactno)
+
+    def enter_address(self, addressline1, postcode):
+        address1 = self.wait.until(EC.element_to_be_clickable((By.NAME, "billing_address[tm_building_id]")))
+        address1.send_keys(addressline1)
+        post = self.wait.until(EC.element_to_be_clickable((By.NAME, "billing_address[postcode]")))
+        post.send_keys(postcode)
+
+
+    def find_address(self):
+        findadd = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@data-bind, 'click: findAddress')]")))
+        findadd.click()
+
+
