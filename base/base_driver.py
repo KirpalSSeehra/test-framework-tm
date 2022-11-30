@@ -1,4 +1,6 @@
 import time
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BaseDriver:
@@ -23,5 +25,8 @@ class BaseDriver:
         pageZoom = self.driver.execute_script("document.body.style.zoom= '67%'")
 
 
-
+    def wait_until_element_is_clickable(self, locator_type, locator):
+        wait = WebDriverWait(self.driver, 20)
+        clickable_element = wait.until(EC.element_to_be_clickable((locator_type, locator)))
+        return clickable_element
 

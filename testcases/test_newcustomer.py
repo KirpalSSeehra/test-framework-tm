@@ -13,11 +13,11 @@ from pages.tm_product_description_page import ProductDescriptionPage
 class TestNewCustomer():
     def test_purchase_device(self):
 
-        hp = HomePage(self.driver, self.wait)
-        cs = CatalogueSearch(self.driver, self.wait)
-        pdp = ProductDescriptionPage(self.driver, self.wait)
-        bp = BasketPage(self.driver, self.wait)
-        co = CheckoutPage(self.driver, self.wait)
+        hp = HomePage(self.driver)
+        cs = CatalogueSearch(self.driver)
+        pdp = ProductDescriptionPage(self.driver)
+        bp = BasketPage(self.driver)
+        co = CheckoutPage(self.driver)
 
         # Accept cookies
         hp.click_cookies()
@@ -36,6 +36,9 @@ class TestNewCustomer():
 
         # Zoom out of page
         # pdp.page_zoom()
+
+        # Scroll to bottom of pdp page
+        # pdp.page_scroll()
 
         # Select device colour
         # pdp.select_device_colour()

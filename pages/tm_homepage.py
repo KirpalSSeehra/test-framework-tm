@@ -6,19 +6,21 @@ from base.base_driver import BaseDriver
 
 
 class HomePage(BaseDriver):
-    def __init__(self, driver, wait):
+    def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-        self.wait = wait
+        # self.wait = wait
 
     # Accept cookies
     def click_cookies(self):
-        clickcookies = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Accept all cookies']")))
-        clickcookies.click()
+        # clickcookies = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Accept all cookies']")))
+        cookie_click = self.wait_until_element_is_clickable(By.XPATH, "//span[normalize-space()='Accept all cookies']")
+        cookie_click.click()
 
     # Search for iphone
     def search_device(self, searchdevice):
-        search_dev = self.wait.until(EC.element_to_be_clickable((By.ID, "search")))
+        # search_dev = self.wait.until(EC.element_to_be_clickable((By.ID, "search")))
+        search_dev = self.wait_until_element_is_clickable(By.ID, "search")
         search_dev.send_keys(searchdevice)
         search_dev.send_keys(Keys.ENTER)
 
