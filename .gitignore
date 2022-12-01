@@ -6,3 +6,4 @@ testcases.pytest_cache
 testcases/__pycache__/test_newcustomer.cpython-310-pytest-7.1.3.pyc
 pages/__pycache__/tm_catalogue_search.cpython-310.pyc
 pages/__pycache__/tm_homepage.cpython-310.pyc
+testcases/__pycache__/conftest.cpython-310-pytest-7.1.3.pyc

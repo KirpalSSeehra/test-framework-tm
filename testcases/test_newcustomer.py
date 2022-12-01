@@ -108,4 +108,6 @@ class TestNewCustomer():
         co.enter_address("44", "IG3 9JG")
         co.find_address()
 
+        co.enter_address_date("10", "2021")
+
         time.sleep(5)
