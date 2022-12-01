@@ -1,7 +1,7 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
-from selenium.webdriver.support import expected_conditions as EC
-
 from base.base_driver import BaseDriver
 
 
@@ -9,17 +9,29 @@ class HomePage(BaseDriver):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-        # self.wait = wait
 
     # Accept cookies
-    def click_cookies(self):
-        # clickcookies = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Accept all cookies']")))
-        cookie_click = self.wait_until_element_is_clickable(By.XPATH, "//span[normalize-space()='Accept all cookies']")
-        cookie_click.click()
+    def accept_cookies(self):
+        accept_cookie = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='consent_prompt_submit']")
+        accept_cookie.click()
+
+
+    # Manage cookies
+    def manage_cookies(self):
+        manage_cookie = self.wait_until_element_is_clickable(By.XPATH,"//*[@id='privacy-more-information']")
+        manage_cookie.click()
+        experience_toggle = self.wait_until_element_is_clickable(By.XPATH, "//label[contains(@for, 'toggle_cat1')]")
+        experience_toggle.click()
+        time.sleep(2)
+        advertising_toggle = self.wait_until_element_is_clickable(By.XPATH, "//label[contains(@for, 'toggle_cat2')]")
+        advertising_toggle.click()
+        time.sleep(2)
+        save_preferences = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='preferences_prompt_submit']")
+        save_preferences.click()
+        time.sleep(2)
 
     # Search for iphone
     def search_device(self, searchdevice):
-        # search_dev = self.wait.until(EC.element_to_be_clickable((By.ID, "search")))
         search_dev = self.wait_until_element_is_clickable(By.ID, "search")
         search_dev.send_keys(searchdevice)
         search_dev.send_keys(Keys.ENTER)

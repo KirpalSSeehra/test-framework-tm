@@ -20,7 +20,10 @@ class TestNewCustomer():
         co = CheckoutPage(self.driver)
 
         # Accept cookies
-        hp.click_cookies()
+        hp.accept_cookies()
+
+        # Manage cookies
+        # hp.manage_cookies()
 
         # Scroll down to bottom of page
         # hp.page_scroll()
@@ -50,13 +53,26 @@ class TestNewCustomer():
         pdp.click_add_to_basket()
 
         # New customer button click
-        pdp.select_type_of_customer()
+        pdp.select_new_customer()
 
-        # Select insurance
-        bp.select_insurance()
+        # Existing button click
+        # pdp.select_existing_customer()
+
+        # Enter existing customer details
+        # Need to deal with bot pop up thing
+        # pdp.enter_existing_customer_details("kirpal-seehra@hotmail.co.uk", "kips1994")
+
+        # Select full insurance
+        bp.select_full_insurance()
 
         # Change contract
         # bp.change_phone_contract()
+
+        # Change safety buffer
+        # bp.change_safety_buffer()
+
+        # Change insurance
+        # bp.change_insurance()
 
         # checkout button
         bp.click_checkout()
