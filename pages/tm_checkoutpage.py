@@ -3,6 +3,7 @@ import time
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
+from selenium.webdriver.support.select import Select
 
 
 class CheckoutPage(BaseDriver):
@@ -44,21 +45,21 @@ class CheckoutPage(BaseDriver):
         print(check_account.is_selected())
 
     def select_type_of_account(self):
-        select_account = self.wait_until_element_is_clickable(By.XPATH, "//div//label[contains(text(), 'Business')]")
-        select_account.click()
+        select_account = self.click_execute_script()
+
 
     def enter_contact_number(self, contactno):
         contact_number = self.wait_until_element_is_clickable(By.NAME, "customer[tm_contact_number]")
         contact_number.send_keys(contactno)
 
-    def enter_address(self, addressline1, postcode):
-        address1 = self.wait_until_element_is_clickable(By.NAME, "billing_address[tm_building_id]")
-        address1.send_keys(addressline1)
-        post = self.wait_until_element_is_clickable(By.NAME, "billing_address[postcode]")
-        post.send_keys(postcode)
+    def enter_address(self, currentaddress, currentpostcode):
+        curr_address1 = self.wait_until_element_is_clickable(By.NAME, "billing_address[tm_building_id]")
+        curr_address1.send_keys(currentaddress)
+        curr_post = self.wait_until_element_is_clickable(By.NAME, "billing_address[postcode]")
+        curr_post.send_keys(currentpostcode)
 
 
-    def find_address(self):
+    def find_current_address(self):
         find_add = self.wait_until_element_is_clickable(By.XPATH, "//a[contains(@data-bind, 'click: findAddress')]")
         find_add.click()
 
@@ -68,5 +69,51 @@ class CheckoutPage(BaseDriver):
         address_year = self.wait_until_element_is_clickable(By.NAME, "billing_address[tm_start_date][year]")
         address_year.send_keys(yyyy)
         address_year.send_keys(Keys.ENTER)
+
+    def enter_previous_address(self, previousaddress, prevpostcode):
+        prev_address1 = self.wait_until_element_is_clickable(By.NAME, "previous_address[tm_building_id]")
+        prev_address1.send_keys(previousaddress)
+        prev_post = self.wait_until_element_is_clickable(By.NAME, "previous_address[postcode]")
+        prev_post.send_keys(prevpostcode)
+
+    def find_previous_address(self):
+        find_prev_address = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='about-form']/fieldset[2]/div[4]/a")
+        find_prev_address.click()
+
+    def enter_previous_address_date(self, prevmm, prevyyyy):
+        prev_address_month = self.wait_until_element_is_clickable(By.NAME, "previous_address[tm_start_date][month]")
+        prev_address_month.send_keys(prevmm)
+        prev_address_year = self.wait_until_element_is_clickable(By.NAME, "previous_address[tm_start_date][year]")
+        prev_address_year.send_keys(prevyyyy)
+        prev_address_year.send_keys(Keys.ENTER)
+
+    def create_account_pw(self, pw, confirmpw):
+        create_pw = self.wait_until_element_is_clickable(By.ID, "customer-password")
+        create_pw.send_keys(pw)
+        confirm_pw = self.wait_until_element_is_clickable(By.ID, "customer-confirm-password")
+        confirm_pw.send_keys(confirmpw)
+        show_hide_pw = self.wait_until_element_is_clickable(By.XPATH,"//a[contains(@data-bind, 'click: showHidePassword')]")
+        show_hide_pw.click()
+
+
+    def select_security_question(self):
+        security_question = self.wait_until_element_is_clickable(By.XPATH, "//select[@name='account[tm_security_question]']")
+        sq = Select(security_question)
+        sq.select_by_visible_text("Your town/city of birth?")
+
+    def enter_security_question(self, securityanswer):
+
+        security_answer = self.wait_until_element_is_clickable(By.NAME, "account[tm_security_answer]")
+        security_answer.send_keys(securityanswer)
+        show_hide_answer = self.wait_until_element_is_clickable(By.XPATH, "//a[contains(@data-bind, 'click: showHideAnswer')]")
+        show_hide_answer.click()
+
+
+
+
+
+
+
+
 
 

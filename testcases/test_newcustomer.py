@@ -29,7 +29,7 @@ class TestNewCustomer():
         # hp.page_scroll()
 
         # Search for device
-        hp.search_device("iphone 12")
+        hp.search_device("iphone 13")
 
         # # Scroll down to bottom of page
         # cs.page_scroll()
@@ -98,16 +98,35 @@ class TestNewCustomer():
         # Check Account Type Selected
         # co.check_type_of_account_selected()
 
+        time.sleep(2)
+
         # Select Account Type
-        co.select_type_of_account()
+        # co.select_type_of_account()
+
+        co.click_execute_script()
+
+        time.sleep(2)
 
         # Enter Contact Number
         co.enter_contact_number("07940490912")
 
         # Enter Address and find address
         co.enter_address("44", "IG3 9JG")
-        co.find_address()
+        co.find_current_address()
 
         co.enter_address_date("10", "2021")
 
-        time.sleep(5)
+        time.sleep(2)
+
+        co.enter_previous_address("42", "IG3 9JG")
+        co.find_previous_address()
+        co.enter_previous_address_date("10", "2018")
+
+        co.create_account_pw("Test0001", "Test0001")
+
+        co.select_security_question()
+
+        co.enter_security_question("red")
+
+        time.sleep(4)
+
