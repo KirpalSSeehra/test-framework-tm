@@ -43,11 +43,17 @@ class TestNewCustomer():
         # Scroll to bottom of pdp page
         # pdp.page_scroll()
 
+        time.sleep(2)
+
         # Select device colour
-        # pdp.select_device_colour()
+        pdp.select_device_colour()
+
+        time.sleep(2)
 
         # Select device storage
         # pdp.select_device_storage()
+
+        time.sleep(2)
 
         # Add to basket
         pdp.click_add_to_basket()
@@ -101,9 +107,11 @@ class TestNewCustomer():
         time.sleep(2)
 
         # Select Account Type
-        # co.select_type_of_account()
+        co.select_type_of_account()
 
-        co.click_execute_script()
+        # co.click_execute_script()
+
+
 
         time.sleep(2)
 

@@ -4,7 +4,8 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
 from selenium.webdriver.support.select import Select
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class CheckoutPage(BaseDriver):
 
@@ -21,8 +22,9 @@ class CheckoutPage(BaseDriver):
         confirm_email.send_keys(confirmemail)
 
     def select_title(self):
-        title = self.wait_until_element_is_clickable(By.XPATH, "/html/body/div[1]/main/div[3]/div/div/div[3]/ol/li[1]/div[2]/form/div[1]/div[2]/div/fieldset/div/div[3]/label")
-        title.click()
+        wait = WebDriverWait(self.driver, 20)
+        title = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, 'ko_unique_4')]")))
+        self.driver.execute_script("arguments[0].click();", title)
 
     def enter_firstname(self, fn):
         first_name = self.wait_until_element_is_clickable(By.NAME, "customer[firstname]")
@@ -40,13 +42,11 @@ class CheckoutPage(BaseDriver):
         enter_year = self.wait_until_element_is_clickable(By.ID, "customer-year")
         enter_year.send_keys(yyyy)
 
-    def check_type_of_account_selected(self):
-        check_account = self.wait_until_element_is_clickable(By.CSS_SELECTOR, "#about-form > div:nth-child(9) > div > fieldset > div > div:nth-child(2) > label")
-        print(check_account.is_selected())
 
     def select_type_of_account(self):
-        select_account = self.click_execute_script()
-
+        wait = WebDriverWait(self.driver, 20)
+        select_account_type = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, 'ko_unique_6')]")))
+        self.driver.execute_script("arguments[0].click();", select_account_type)
 
     def enter_contact_number(self, contactno):
         contact_number = self.wait_until_element_is_clickable(By.NAME, "customer[tm_contact_number]")

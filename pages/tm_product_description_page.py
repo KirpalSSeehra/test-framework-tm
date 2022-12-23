@@ -1,7 +1,10 @@
 import time
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 from base.base_driver import BaseDriver
+from selenium.webdriver.support import expected_conditions as EC
+
 
 
 class ProductDescriptionPage(BaseDriver):
@@ -11,12 +14,15 @@ class ProductDescriptionPage(BaseDriver):
         self.driver = driver
 
     def select_device_colour(self):
-        select_colour = self.wait_until_element_is_clickable(By.XPATH, "//span[contains(text(), 'Purple')]")
-        select_colour.click()
+        wait = WebDriverWait(self.driver, 20)
+        select_colour = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='tm-deal-device-wrapper']/div[1]/div/div[1]/div/div[4]")))
+        self.driver.execute_script("arguments[0].click();", select_colour)
 
     def select_device_storage(self):
-        select_storage = self.wait_until_element_is_clickable(By.XPATH, "//span[contains(text(),'256GB')]")
-        select_storage.click()
+        wait = WebDriverWait(self.driver, 20)
+        select_storage = wait.until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(),'256GB')]")))
+        self.driver.execute_script("arguments[0].click();", select_storage)
+
 
     def click_add_to_basket(self):
         add_basket = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='emulate-button-pay-monthly']")
