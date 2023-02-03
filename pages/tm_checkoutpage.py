@@ -13,100 +13,193 @@ class CheckoutPage(BaseDriver):
         super().__init__(driver)
         self.driver = driver
 
-    def enter_email_address(self, emailadd):
-        enter_email = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='customer-email']")
-        enter_email.send_keys(emailadd)
+    # Locators
+    EMAIL_ADDRESS_FIELD = "//*[@id='customer-email']"
+    CONFIRM_EMAIL_ADDRESS_FIELD = "//*[@id='customer-confirm-email']"
+    # SELECT_TITLE_BTN = ""
+    FIRST_NAME_FIELD = "customer[firstname]"
+    LAST_NAME_FIELD = "customer[lastname]"
+    DOB_DATE_FIELD = "customer-day"
+    DOB_MONTH_FIELD = "customer-month"
+    DOB_YEAR_FIELD = "customer-year"
+    # SELECT_ACCOUNT_TYPE_BTN
+    CONTACT_NO_FIELD = "customer[tm_contact_number]"
+    CURRENT_ADDRESS_LINE_FIELD = "billing_address[tm_building_id]"
+    CURRENT_POSTCODE_FIELD = "billing_address[postcode]"
+    FIND_CURRENT_ADDRESS_BTN = "//a[contains(@data-bind, 'click: findAddress')]"
+    CURRENT_ADDRESS_MONTH_FIELD = "billing_address[tm_start_date][month]"
+    CURRENT_ADDRESS_YEAR_FIELD = "billing_address[tm_start_date][year]"
+    PREVIOUS_ADDRESS_LINE_FIELD = "previous_address[tm_building_id]"
+    PREVIOUS_POSTCODE_FIELD = "previous_address[postcode]"
+    FIND_PREVIOUS_ADDRESS_BTN = "//*[@id='about-form']/fieldset[2]/div[4]/a"
+    PREVIOUS_ADDRESS_MONTH_FIELD = "previous_address[tm_start_date][month]"
+    PREVIOUS_ADDRESS_YEAR_FIELD = "previous_address[tm_start_date][year]"
+    CREATE_PW_FIELD = "customer-password"
+    CONFIRM_PW_FIELD = "customer-confirm-password"
+    SHOW_HIDE_PW_BTN = "//a[contains(@data-bind, 'click: showHidePassword')]"
+    SECURITY_QUESTION_DROPDOWN = "//select[@name='account[tm_security_question]']"
+    SECURITY_ANSWER_FIELD = "account[tm_security_answer]"
+    SECURITY_ANSWER_SHOW_HIDE_BTN = "//a[contains(@data-bind, 'click: showHideAnswer')]"
 
-    def confirm_email_address(self, confirmemail):
-        confirm_email = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='customer-confirm-email']")
-        confirm_email.send_keys(confirmemail)
+    # Get Methods
+    def getEmailAddressField(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.EMAIL_ADDRESS_FIELD)
+
+    def getConfirmEmailField(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.CONFIRM_EMAIL_ADDRESS_FIELD)
+
+    def getFirstNameField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.FIRST_NAME_FIELD)
+
+    def getLastNameField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.LAST_NAME_FIELD)
+
+    def getDobDateField(self):
+        return self.wait_until_element_is_clickable(By.ID, self.DOB_DATE_FIELD)
+
+    def getDobMonthField(self):
+        return self.wait_until_element_is_clickable(By.ID, self.DOB_MONTH_FIELD)
+
+    def getDobYearField(self):
+        return self.wait_until_element_is_clickable(By.ID, self.DOB_YEAR_FIELD)
+
+    def getContactNumberField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.CONTACT_NO_FIELD)
+
+    def getCurrentAddressLineField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.CURRENT_ADDRESS_LINE_FIELD)
+
+    def getCurrentAddressPostcodeField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.CURRENT_POSTCODE_FIELD)
+
+    def getFindCurrentAddressBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.FIND_CURRENT_ADDRESS_BTN)
+
+    def getCurrentAddressMonthField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.CURRENT_ADDRESS_MONTH_FIELD)
+
+    def getCurrentAddressYearField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.CURRENT_ADDRESS_YEAR_FIELD)
+
+    def getPreviousAddressLineField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.PREVIOUS_ADDRESS_LINE_FIELD)
+
+    def getPreviousAddressPostcodeField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.PREVIOUS_POSTCODE_FIELD)
+
+    def getFindPreviousAddressBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.FIND_PREVIOUS_ADDRESS_BTN)
+
+    def getPreviousAddressMonthField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.PREVIOUS_ADDRESS_MONTH_FIELD)
+
+    def getPreviousAddressYearField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.PREVIOUS_ADDRESS_YEAR_FIELD)
+
+    def getCreatePwField(self):
+        return self.wait_until_element_is_clickable(By.ID, self.CREATE_PW_FIELD)
+
+    def getConfirmPwField(self):
+        return self.wait_until_element_is_clickable(By.ID, self.CONFIRM_PW_FIELD)
+
+    def getShowHidePwBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.SHOW_HIDE_PW_BTN)
+
+    def getSecurityQuestionDropdown(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.SECURITY_QUESTION_DROPDOWN)
+
+    def getSecurityAnswerField(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.SECURITY_ANSWER_FIELD)
+
+    def getSecurityAnswerHideShowBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.SECURITY_ANSWER_SHOW_HIDE_BTN)
+
+    # Action methods
+
+    def enterEmailAddressField(self, emailaddress):
+        self.getEmailAddressField().send_keys(emailaddress)
+
+    def enterConfirmEmailAddressField(self, confirmemail):
+        self.getConfirmEmailField().send_keys(confirmemail)
 
     def select_title(self):
         wait = WebDriverWait(self.driver, 20)
         title = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, 'ko_unique_4')]")))
         self.driver.execute_script("arguments[0].click();", title)
 
-    def enter_firstname(self, fn):
-        first_name = self.wait_until_element_is_clickable(By.NAME, "customer[firstname]")
-        first_name.send_keys(fn)
+    def enterFirstNameField(self, fn):
+        self.getFirstNameField().send_keys(fn)
 
-    def enter_lastname(self, ln):
-        last_name = self.wait_until_element_is_clickable(By.NAME, "customer[lastname]")
-        last_name.send_keys(ln)
+    def enterLastNameField(self, ln):
+        self.getLastNameField().send_keys(ln)
 
-    def enter_dob(self, dd, mm, yyyy):
-        enter_day = self.wait_until_element_is_clickable(By.ID, "customer-day")
-        enter_day.send_keys(dd)
-        enter_month = self.wait_until_element_is_clickable(By.ID, "customer-month")
-        enter_month.send_keys(mm)
-        enter_year = self.wait_until_element_is_clickable(By.ID, "customer-year")
-        enter_year.send_keys(yyyy)
+    def enterDobDateField(self, dd):
+        self.getDobDateField().send_keys(dd)
 
+    def enterDobMonthField(self, mm):
+        self.getDobMonthField().send_keys(mm)
+
+    def enterDobYearField(self, yyyy):
+        self.getDobYearField().send_keys(yyyy)
 
     def select_type_of_account(self):
         wait = WebDriverWait(self.driver, 20)
         select_account_type = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, 'ko_unique_6')]")))
         self.driver.execute_script("arguments[0].click();", select_account_type)
 
-    def enter_contact_number(self, contactno):
-        contact_number = self.wait_until_element_is_clickable(By.NAME, "customer[tm_contact_number]")
-        contact_number.send_keys(contactno)
+    def enterContactNumber(self, contactno):
+        self.getContactNumberField().send_keys(contactno)
 
-    def enter_address(self, currentaddress, currentpostcode):
-        curr_address1 = self.wait_until_element_is_clickable(By.NAME, "billing_address[tm_building_id]")
-        curr_address1.send_keys(currentaddress)
-        curr_post = self.wait_until_element_is_clickable(By.NAME, "billing_address[postcode]")
-        curr_post.send_keys(currentpostcode)
+    def enterCurrentAddressLine(self, currentaddressline):
+        self.getCurrentAddressLineField().send_keys(currentaddressline)
 
+    def enterCurrentAddressPostcode(self, currentpostcode):
+        self.getCurrentAddressPostcodeField().send_keys(currentpostcode)
 
-    def find_current_address(self):
-        find_add = self.wait_until_element_is_clickable(By.XPATH, "//a[contains(@data-bind, 'click: findAddress')]")
-        find_add.click()
+    def selectCurrentFindAddressBtn(self):
+        self.getFindCurrentAddressBtn().click()
 
-    def enter_address_date(self, mm, yyyy):
-        address_month = self.wait_until_element_is_clickable(By.NAME, "billing_address[tm_start_date][month]")
-        address_month.send_keys(mm)
-        address_year = self.wait_until_element_is_clickable(By.NAME, "billing_address[tm_start_date][year]")
-        address_year.send_keys(yyyy)
-        address_year.send_keys(Keys.ENTER)
+    def enterCurrentAddressMonth(self, mm):
+        self.getCurrentAddressMonthField().send_keys(mm)
 
-    def enter_previous_address(self, previousaddress, prevpostcode):
-        prev_address1 = self.wait_until_element_is_clickable(By.NAME, "previous_address[tm_building_id]")
-        prev_address1.send_keys(previousaddress)
-        prev_post = self.wait_until_element_is_clickable(By.NAME, "previous_address[postcode]")
-        prev_post.send_keys(prevpostcode)
+    def enterCurrentAddressYear(self, yyyy):
+        self.getCurrentAddressYearField().send_keys(yyyy)
+        self.getCurrentAddressYearField().send_keys(Keys.ENTER)
 
-    def find_previous_address(self):
-        find_prev_address = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='about-form']/fieldset[2]/div[4]/a")
-        find_prev_address.click()
+    def enterPreviousAddressLine(self, previousaddressline):
+        self.getPreviousAddressLineField().send_keys(previousaddressline)
 
-    def enter_previous_address_date(self, prevmm, prevyyyy):
-        prev_address_month = self.wait_until_element_is_clickable(By.NAME, "previous_address[tm_start_date][month]")
-        prev_address_month.send_keys(prevmm)
-        prev_address_year = self.wait_until_element_is_clickable(By.NAME, "previous_address[tm_start_date][year]")
-        prev_address_year.send_keys(prevyyyy)
-        prev_address_year.send_keys(Keys.ENTER)
+    def enterPreviousAddressPostcode(self, previouspostcode):
+        self.getPreviousAddressPostcodeField().send_keys(previouspostcode)
 
-    def create_account_pw(self, pw, confirmpw):
-        create_pw = self.wait_until_element_is_clickable(By.ID, "customer-password")
-        create_pw.send_keys(pw)
-        confirm_pw = self.wait_until_element_is_clickable(By.ID, "customer-confirm-password")
-        confirm_pw.send_keys(confirmpw)
-        show_hide_pw = self.wait_until_element_is_clickable(By.XPATH,"//a[contains(@data-bind, 'click: showHidePassword')]")
-        show_hide_pw.click()
+    def selectPreviousAddressBtn(self):
+        self.getFindPreviousAddressBtn().click()
 
+    def enterPreviousAddressMonth(self, mm):
+        self.getPreviousAddressMonthField().send_keys(mm)
 
-    def select_security_question(self):
-        security_question = self.wait_until_element_is_clickable(By.XPATH, "//select[@name='account[tm_security_question]']")
-        sq = Select(security_question)
-        sq.select_by_visible_text("Your town/city of birth?")
+    def enterPreviousAddressYear(self, yyyy):
+        self.getPreviousAddressYearField().send_keys(yyyy)
+        self.getPreviousAddressYearField().send_keys(Keys.ENTER)
 
-    def enter_security_question(self, securityanswer):
+    def enterPwField(self, pw):
+        self.getCreatePwField().send_keys(pw)
 
-        security_answer = self.wait_until_element_is_clickable(By.NAME, "account[tm_security_answer]")
-        security_answer.send_keys(securityanswer)
-        show_hide_answer = self.wait_until_element_is_clickable(By.XPATH, "//a[contains(@data-bind, 'click: showHideAnswer')]")
-        show_hide_answer.click()
+    def enterConfirmPwField(self, confirmpw):
+        self.getConfirmPwField().send_keys(confirmpw)
+
+    def selectShowHidePwBtn(self):
+        self.getShowHidePwBtn().click()
+
+    def selectSecurityQuestion(self):
+        sq = Select(self.getSecurityQuestionDropdown())
+        sq.select_by_visible_text("Your father\'s first name?")
+
+    def enterSecurityAnswer(self, securityanswer):
+        self.getSecurityAnswerField().send_keys(securityanswer)
+
+    def selectSecurityHideShowBtn(self):
+        self.getSecurityAnswerHideShowBtn().click()
 
 
 

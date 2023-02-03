@@ -79,27 +79,30 @@ class TestNewCustomer():
 
         # Change insurance
         # bp.change_insurance()
+        time.sleep(2)
 
         # checkout button
         bp.click_checkout()
 
         # Enter email address
-        co.enter_email_address("kirpal-seehra@hotmail.co.uk")
+        co.enterEmailAddressField("kirpal-seehra@hotmail.co.uk")
 
         # Confirm email address
-        co.confirm_email_address("kirpal-seehra@hotmail.co.uk")
+        co.enterConfirmEmailAddressField("kirpal-seehra@hotmail.co.uk")
 
         # Select title
         co.select_title()
 
         # Enter firstname
-        co.enter_firstname("Kirpal")
+        co.enterFirstNameField("Kirpal")
 
         # Enter lastname
-        co.enter_lastname("Seehra")
+        co.enterLastNameField("Seehra")
 
         # Enter DOB
-        co.enter_dob("03", "10", "1994")
+        co.enterDobDateField("03")
+        co.enterDobMonthField("10")
+        co.enterDobYearField("1994")
 
         # Check Account Type Selected
         # co.check_type_of_account_selected()
@@ -111,30 +114,46 @@ class TestNewCustomer():
 
         # co.click_execute_script()
 
-
-
         time.sleep(2)
 
         # Enter Contact Number
-        co.enter_contact_number("07940490912")
+        co.enterContactNumber("07940490912")
 
-        # Enter Address and find address
-        co.enter_address("44", "IG3 9JG")
-        co.find_current_address()
+        # Enter current address and find address
+        co.enterCurrentAddressLine("44")
+        co.enterCurrentAddressPostcode("IG3 9JG")
+        co.selectCurrentFindAddressBtn()
 
-        co.enter_address_date("10", "2021")
+        # Enter current address month and year
+        co.enterCurrentAddressMonth("10")
+        co.enterCurrentAddressYear("2021")
 
         time.sleep(2)
 
-        co.enter_previous_address("42", "IG3 9JG")
-        co.find_previous_address()
-        co.enter_previous_address_date("10", "2018")
+        # Enter previous address and find address
+        co.enterPreviousAddressLine("42")
+        co.enterPreviousAddressPostcode("IG3 9JG")
+        co.selectPreviousAddressBtn()
 
-        co.create_account_pw("Test0001", "Test0001")
+        # Enter previous address month and year
+        co.enterPreviousAddressMonth("10")
+        co.enterPreviousAddressYear("2018")
 
-        co.select_security_question()
+        co.enterPwField("Test0001")
+        co.enterConfirmPwField("Test0001")
+        co.selectShowHidePwBtn()
 
-        co.enter_security_question("red")
+        co.selectSecurityQuestion()
 
-        time.sleep(4)
+        time.sleep(3)
+
+        co.enterSecurityAnswer("red")
+
+        time.sleep(2)
+
+        co.selectSecurityHideShowBtn()
+
+        time.sleep(2)
+
+
 
