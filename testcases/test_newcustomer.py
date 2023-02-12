@@ -20,22 +20,28 @@ class TestNewCustomer():
         co = CheckoutPage(self.driver)
 
         # Accept cookies
-        hp.accept_cookies()
+        hp.selectAcceptCookiesBtn()
 
         # Manage cookies
-        # hp.manage_cookies()
+        # hp.selectManageCookiesBtn()
+        # hp.selectManageExperienceBtn()
+        # time.sleep(1)
+        # hp.selectManageAdvertisingBtn()
+        # time.sleep(1)
+        # hp.selectManageSavePreferencesBtn()
+        # time.sleep(1)
 
         # Scroll down to bottom of page
         # hp.page_scroll()
 
         # Search for device
-        hp.search_device("iphone 13")
+        hp.enterSearchBarField("iphone 13")
 
         # # Scroll down to bottom of page
         # cs.page_scroll()
 
         # Select first carousel item
-        cs.select_device()
+        cs.selectDeviceItem()
 
         # Zoom out of page
         # pdp.page_zoom()
@@ -46,43 +52,56 @@ class TestNewCustomer():
         time.sleep(2)
 
         # Select device colour
-        pdp.select_device_colour()
+        pdp.selectDeviceColourBtn()
 
         time.sleep(2)
 
         # Select device storage
-        # pdp.select_device_storage()
+        # pdp.selectDeviceStorageBtn()
+
+        pdp.selectTariffSelectorBtn()
 
         time.sleep(2)
 
         # Add to basket
-        pdp.click_add_to_basket()
+        pdp.selectAddToBasketBtn()
 
         # New customer button click
-        pdp.select_new_customer()
+        pdp.selectNewCustomerBtn()
 
         # Existing button click
-        # pdp.select_existing_customer()
+        # pdp.selectExistingCustomerBtn()
 
         # Enter existing customer details
         # Need to deal with bot pop up thing
-        # pdp.enter_existing_customer_details("kirpal-seehra@hotmail.co.uk", "kips1994")
+        # pdp.enterExistingCustomerEmailField("kirpal-seehra@hotmail.co.uk")
+        # pdp.enterExistingCustomerPwField("kips1994")
+        # time.sleep(2)
+        # pdp.selectExistingCustomerLoginBtn()
+        # time.sleep(2)
 
-        # Select full insurance
-        bp.select_full_insurance()
-
-        # Change contract
-        # bp.change_phone_contract()
-
-        # Change safety buffer
-        # bp.change_safety_buffer()
-
-        # Change insurance
-        # bp.change_insurance()
+        # Selecting insurance options
+        bp.selectFullCoverBtn()
+        time.sleep(2)
+        bp.selectInsurancePolicyContinueBtn()
         time.sleep(2)
 
+        # Change contract
+        # bp.selectChangePhoneContractBtn()
+
+        # Change safety buffer
+        # bp.selectChangeSafetyBufferBtn()
+
+        # Change insurance
+        # bp.selectChangeInsuranceBtn()
+        # time.sleep(2)
+        # bp.selectFullCoverBtn()
+        # time.sleep(2)
+        # bp.selectNoInsurancePolicyContinueBtn()
+        # time.sleep(2)
+
         # checkout button
-        bp.click_checkout()
+        bp.selectGoToCheckoutBtn()
 
         # Enter email address
         co.enterEmailAddressField("kirpal-seehra@hotmail.co.uk")

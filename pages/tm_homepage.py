@@ -10,30 +10,50 @@ class HomePage(BaseDriver):
         super().__init__(driver)
         self.driver = driver
 
-    # Accept cookies
-    def accept_cookies(self):
-        accept_cookie = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='consent_prompt_submit']")
-        accept_cookie.click()
+    # Locators
+    ACCEPT_COOKIES_BTN = "//*[@id='consent_prompt_submit']"
+    MANAGE_COOKIES_BTN = "//*[@id='privacy-more-information']"
+    MANAGE_EXPERIENCE_BTN = "//label[contains(@for, 'toggle_cat1')]"
+    MANAGE_ADVERTISING_BTN = "//label[contains(@for, 'toggle_cat2')]"
+    MANAGE_SAVE_PREFERENCES_BTN = "//*[@id='preferences_prompt_submit']"
+    SEARCH_BAR_FIELD = "search"
 
 
-    # Manage cookies
-    def manage_cookies(self):
-        manage_cookie = self.wait_until_element_is_clickable(By.XPATH,"//*[@id='privacy-more-information']")
-        manage_cookie.click()
-        experience_toggle = self.wait_until_element_is_clickable(By.XPATH, "//label[contains(@for, 'toggle_cat1')]")
-        experience_toggle.click()
-        time.sleep(2)
-        advertising_toggle = self.wait_until_element_is_clickable(By.XPATH, "//label[contains(@for, 'toggle_cat2')]")
-        advertising_toggle.click()
-        time.sleep(2)
-        save_preferences = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='preferences_prompt_submit']")
-        save_preferences.click()
-        time.sleep(2)
+    def getAcceptCookiesBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.ACCEPT_COOKIES_BTN)
 
-    # Search for iphone
-    def search_device(self, searchdevice):
-        search_dev = self.wait_until_element_is_clickable(By.ID, "search")
-        search_dev.send_keys(searchdevice)
-        search_dev.send_keys(Keys.ENTER)
+    def getManageCookiesBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_COOKIES_BTN)
+
+    def getManageExperienceBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_EXPERIENCE_BTN)
+
+    def getManageAdvertisingBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_ADVERTISING_BTN)
+
+    def getManageSavePreferencesBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_SAVE_PREFERENCES_BTN)
+
+    def getSearchBarField(self):
+        return self.wait_until_element_is_clickable(By.ID, self.SEARCH_BAR_FIELD)
+
+    def selectAcceptCookiesBtn(self):
+        self.getAcceptCookiesBtn().click()
+
+    def selectManageCookiesBtn(self):
+        self.getManageCookiesBtn().click()
+
+    def selectManageExperienceBtn(self):
+        self.getManageExperienceBtn().click()
+
+    def selectManageAdvertisingBtn(self):
+        self.getManageAdvertisingBtn().click()
+
+    def selectManageSavePreferencesBtn(self):
+        self.getManageSavePreferencesBtn().click()
+
+    def enterSearchBarField(self, searchbar):
+        self.getSearchBarField().send_keys(searchbar)
+        self.getSearchBarField().send_keys(Keys.ENTER)
 
 

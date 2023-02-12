@@ -13,39 +13,77 @@ class ProductDescriptionPage(BaseDriver):
         super().__init__(driver)
         self.driver = driver
 
-    def select_device_colour(self):
-        wait = WebDriverWait(self.driver, 20)
-        select_colour = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='tm-deal-device-wrapper']/div[1]/div/div[1]/div/div[4]")))
-        self.driver.execute_script("arguments[0].click();", select_colour)
+    # Locators
+    DEVICE_COLOUR_BTN = "//*[@id='tm-deal-device-wrapper']/div[1]/div/div[1]/div/div[4]"
+    DEVICE_STORAGE_BTN = "//span[contains(text(),'256GB')]"
+    TARIFF_SELECTOR_BTN = "//*[@id='bundle-option-14701-40651']"
+    ADD_TO_BASKET_BTN = "//*[@id='product-addtocart-button']"
+    AB_ADD_TO_BASKET_BTN = "//*[@id='emulate-button-pay-monthly']" #AB = Action Bar
+    NEW_CUSTOMER_BTN = "//button[contains(@data-bind, 'click: isNewCustomer')]"
+    EXISTING_CUSTOMER_BTN = "//button[contains(@data-bind, 'click: isExistingCustomer')]"
+    EXISTING_CUSTOMER_EMAIL_FIELD = "//input[contains(@id, 'customer-email')]"
+    EXISTING_CUSTOMER_PW_FIELD = "//input[contains(@id, 'pass')]"
+    EXISTING_CUSTOMER_LOGIN_BTN = "//button[@id='send2']"
 
-    def select_device_storage(self):
-        wait = WebDriverWait(self.driver, 20)
-        select_storage = wait.until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(),'256GB')]")))
-        self.driver.execute_script("arguments[0].click();", select_storage)
+    def getDeviceColourBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.DEVICE_COLOUR_BTN)
 
+    def selectDeviceColourBtn(self):
+        self.driver.execute_script("arguments[0].click();", self.getDeviceColourBtn())
 
-    def click_add_to_basket(self):
-        add_basket = self.wait_until_element_is_clickable(By.XPATH, "//*[@id='emulate-button-pay-monthly']")
-        add_basket.click()
+    def getDeviceStorageBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.DEVICE_STORAGE_BTN)
 
-    def select_new_customer(self):
-        new_cust = self.wait_until_element_is_clickable(By.XPATH, "//button[contains(@data-bind, 'click: isNewCustomer')]")
-        new_cust.click()
+    def selectDeviceStorageBtn(self):
+        self.driver.execute_script("arguments[0].click();", self.getDeviceStorageBtn())
 
-    def select_existing_customer(self):
-        existing_cust = self.wait_until_element_is_clickable(By.XPATH, "//button[contains(@data-bind, 'click: isExistingCustomer')]")
-        existing_cust.click()
+    def getTariffSelectorBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.TARIFF_SELECTOR_BTN)
 
-    def enter_existing_customer_details(self, cust_email, cust_pw):
-        existing_cust_email = self.wait_until_element_is_clickable(By.XPATH, "//input[contains(@id, 'customer-email')]")
-        existing_cust_email.send_keys(cust_email)
-        time.sleep(2)
-        existing_cust_pw = self.wait_until_element_is_clickable(By.XPATH, "//input[contains(@id, 'pass')]")
-        existing_cust_pw.send_keys(cust_pw)
-        time.sleep(2)
-        existing_cust_login = self.wait_until_element_is_clickable(By.XPATH, "//Button[@id='send2']")
-        existing_cust_login.click()
-        time.sleep(2)
+    def selectTariffSelectorBtn(self):
+        self.driver.execute_script("arguments[0].click();", self.getTariffSelectorBtn())
+
+    def getAddToBasketBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.ADD_TO_BASKET_BTN)
+
+    def selectAddToBasketBtn(self):
+        self.driver.execute_script("arguments[0].click();", self.getAddToBasketBtn())
+
+    def getAbAddToBasketBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.AB_ADD_TO_BASKET_BTN)
+
+    def selectAbAddToBasketBtn(self):
+        self.getAbAddToBasketBtn().click()
+
+    def getNewCustomerBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.NEW_CUSTOMER_BTN)
+
+    def selectNewCustomerBtn(self):
+        self.getNewCustomerBtn().click()
+
+    def getExistingCustomerBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_BTN)
+
+    def selectExistingCustomerBtn(self):
+        self.getExistingCustomerBtn().click()
+
+    def getExistingCustomerEmailField(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_EMAIL_FIELD)
+
+    def enterExistingCustomerEmailField(self, customer_email):
+        self.getExistingCustomerEmailField().send_keys(customer_email)
+
+    def getExistingCustomerPwField(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_PW_FIELD)
+
+    def enterExistingCustomerPwField(self, customer_pw):
+        self.getExistingCustomerPwField().send_keys(customer_pw)
+
+    def getExistingCustomerLoginBtn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_LOGIN_BTN)
+
+    def selectExistingCustomerLoginBtn(self):
+        self.getExistingCustomerLoginBtn().click()
 
 
 

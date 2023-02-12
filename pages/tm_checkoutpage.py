@@ -114,7 +114,7 @@ class CheckoutPage(BaseDriver):
     def getSecurityAnswerHideShowBtn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.SECURITY_ANSWER_SHOW_HIDE_BTN)
 
-    # Action methods
+    # Methods to perform actions on get methods
 
     def enterEmailAddressField(self, emailaddress):
         self.getEmailAddressField().send_keys(emailaddress)
