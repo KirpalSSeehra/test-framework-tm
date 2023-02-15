@@ -25,74 +25,74 @@ class BasketPage(BaseDriver):
     GO_TO_CHECKOUT_BTN = "//button[@title='Go to checkout']"
 
 
-    def getFullCoverBtn(self):
+    def get_full_cover_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.FULL_COVER_BTN)
 
-    def getDamageCoverBtn(self):
+    def get_damage_cover_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.DAMAGE_COVER_BTN)
 
-    def getNoInsuranceBtn(self):
+    def get_no_insurance_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.NO_INSURANCE_BTN)
 
-    def getShowMoreLessBtn(self):
+    def get_show_more_less_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.SHOW_MORE_LESS_BTN)
 
-    def getInsurancePolicyContinueBtn(self):
+    def get_insurance_policy_continue_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.INSURANCE_POLICY_CONTINUE_BTN)
 
-    def getInsurancePolicyBackBtn(self):
+    def get_insurance_policy_back_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.INSURANCE_POLICY_BACK_BTN)
 
-    def getNoInsurancePolicyContinueBtn(self):
+    def get_no_insurance_policy_continue_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.NO_INSURANCE_POLICY_CONTINUE_BTN)
 
-    def getNoInsurancePolicyBackBtn(self):
+    def get_no_insurance_policy_back_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.NO_INSURANCE_POLICY_BACK_BTN)
 
-    def getChangePhoneContractBtn(self):
+    def get_change_phone_contract_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.CHANGE_PHONE_CONTRACT_BTN)
 
-    def getChangeSafetyBufferBtn(self):
+    def get_change_safety_buffer_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.CHANGE_SAFETY_BUFFER_BTN)
 
-    def getChangeInsuranceBtn(self):
+    def get_change_insurance_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.CHANGE_INSURANCE_BTN)
 
-    def getGoToCheckoutBtn(self):
+    def get_go_to_checkout_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.GO_TO_CHECKOUT_BTN)
 
-    def selectFullCoverBtn(self):
-        self.getFullCoverBtn().click()
+    def select_full_cover_btn(self):
+        self.get_full_cover_btn().click()
 
-    def selectDamageCoverBtn(self):
-        self.getDamageCoverBtn().click()
+    def select_damage_cover_btn(self):
+        self.get_damage_cover_btn().click()
 
-    def selectNoInsuranceBtn(self):
-        self.getNoInsuranceBtn().click()
+    def select_no_insurance_btn(self):
+        self.get_no_insurance_btn().click()
 
-    def selectShowMoreLessBtn(self):
-        self.getShowMoreLessBtn().click()
+    def select_show_more_less_btn(self):
+        self.get_show_more_less_btn().click()
 
-    def selectInsurancePolicyContinueBtn(self):
-        self.getInsurancePolicyContinueBtn().click()
+    def select_insurance_policy_continue_btn(self):
+        self.get_insurance_policy_continue_btn().click()
 
-    def selectInsurancePolicyBackBtn(self):
-        self.getInsurancePolicyBackBtn().click()
+    def select_insurance_policy_back_btn(self):
+        self.get_insurance_policy_back_btn().click()
 
-    def selectNoInsurancePolicyContinueBtn(self):
-        self.getNoInsurancePolicyContinueBtn().click()
+    def select_no_insurance_policy_continue_btn(self):
+        self.get_no_insurance_policy_continue_btn().click()
 
-    def selectNoInsurancePolicyBackBtn(self):
-        self.getNoInsurancePolicyBackBtn().click()
+    def select_no_insurance_policy_back_btn(self):
+        self.get_no_insurance_policy_back_btn().click()
 
-    def selectChangePhoneContractBtn(self):
-        self.getChangePhoneContractBtn().click()
+    def select_change_phone_contract_btn(self):
+        self.get_change_phone_contract_btn().click()
 
-    def selectChangeSafetyBufferBtn(self):
-        self.getChangeSafetyBufferBtn().click()
+    def select_change_safety_buffer_btn(self):
+        self.get_change_safety_buffer_btn().click()
 
-    def selectChangeInsuranceBtn(self):
-        self.getChangeInsuranceBtn().click()
+    def select_change_insurance_btn(self):
+        self.get_change_insurance_btn().click()
 
-    def selectGoToCheckoutBtn(self):
-        self.getGoToCheckoutBtn().click()
+    def select_go_to_checkout_btn(self):
+        self.get_go_to_checkout_btn().click()

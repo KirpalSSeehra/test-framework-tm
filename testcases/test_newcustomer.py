@@ -20,28 +20,28 @@ class TestNewCustomer():
         co = CheckoutPage(self.driver)
 
         # Accept cookies
-        hp.selectAcceptCookiesBtn()
+        hp.select_accept_cookies_btn()
 
         # Manage cookies
-        # hp.selectManageCookiesBtn()
-        # hp.selectManageExperienceBtn()
+        # hp.select_manage_cookies_btn()
+        # hp.select_manage_experience_btn()
         # time.sleep(1)
-        # hp.selectManageAdvertisingBtn()
+        # hp.select_manage_advertising_btn()
         # time.sleep(1)
-        # hp.selectManageSavePreferencesBtn()
+        # hp.select_manage_save_preferences_btn()
         # time.sleep(1)
 
         # Scroll down to bottom of page
         # hp.page_scroll()
 
         # Search for device
-        hp.enterSearchBarField("iphone 13")
+        hp.enter_search_bar_field("iphone 13")
 
         # # Scroll down to bottom of page
         # cs.page_scroll()
 
         # Select first carousel item
-        cs.selectDeviceItem()
+        cs.select_device_item()
 
         # Zoom out of page
         # pdp.page_zoom()
@@ -52,22 +52,22 @@ class TestNewCustomer():
         time.sleep(2)
 
         # Select device colour
-        pdp.selectDeviceColourBtn()
+        pdp.select_device_colour_btn()
 
         time.sleep(2)
 
         # Select device storage
         # pdp.selectDeviceStorageBtn()
 
-        pdp.selectTariffSelectorBtn()
+        pdp.select_tariff_selector_btn()
 
         time.sleep(2)
 
         # Add to basket
-        pdp.selectAddToBasketBtn()
+        pdp.select_add_to_basket_btn()
 
         # New customer button click
-        pdp.selectNewCustomerBtn()
+        pdp.select_new_customer_btn()
 
         # Existing button click
         # pdp.selectExistingCustomerBtn()
@@ -81,47 +81,39 @@ class TestNewCustomer():
         # time.sleep(2)
 
         # Selecting insurance options
-        bp.selectFullCoverBtn()
+        bp.select_full_cover_btn()
         time.sleep(2)
-        bp.selectInsurancePolicyContinueBtn()
+        bp.select_insurance_policy_continue_btn()
         time.sleep(2)
 
         # Change contract
-        # bp.selectChangePhoneContractBtn()
+        # bp.select_change_phone_contract_btn()
 
         # Change safety buffer
-        # bp.selectChangeSafetyBufferBtn()
+        # bp.select_change_safety_buffer_btn()
 
         # Change insurance
-        # bp.selectChangeInsuranceBtn()
+        # bp.select_change_insurance_btn()
         # time.sleep(2)
-        # bp.selectFullCoverBtn()
+        # bp.select_full_cover_btn()
         # time.sleep(2)
-        # bp.selectNoInsurancePolicyContinueBtn()
+        # bp.select_no_insurance_policy_continue_btn()
         # time.sleep(2)
 
         # checkout button
-        bp.selectGoToCheckoutBtn()
+        bp.select_go_to_checkout_btn()
 
-        # Enter email address
-        co.enterEmailAddressField("kirpal-seehra@hotmail.co.uk")
-
-        # Confirm email address
-        co.enterConfirmEmailAddressField("kirpal-seehra@hotmail.co.uk")
+        # Enter email address and confirm email
+        co.enter_email_twice("kirpal-seehra@hotmail.co.uk", "kirpal-seehra@hotmail.co.uk")
 
         # Select title
         co.select_title()
 
-        # Enter firstname
-        co.enterFirstNameField("Kirpal")
-
-        # Enter lastname
-        co.enterLastNameField("Seehra")
+        # Enter Fullname
+        co.enter_full_name("Kirpal", "Seehra")
 
         # Enter DOB
-        co.enterDobDateField("03")
-        co.enterDobMonthField("10")
-        co.enterDobYearField("1994")
+        co.enter_dob("03", "10", "1994")
 
         # Check Account Type Selected
         # co.check_type_of_account_selected()
@@ -129,48 +121,38 @@ class TestNewCustomer():
         time.sleep(2)
 
         # Select Account Type
-        co.select_type_of_account()
+        # co.select_type_of_account()
 
         # co.click_execute_script()
 
         time.sleep(2)
 
         # Enter Contact Number
-        co.enterContactNumber("07940490912")
+        co.enter_contact_number("07940490912")
 
-        # Enter current address and find address
-        co.enterCurrentAddressLine("44")
-        co.enterCurrentAddressPostcode("IG3 9JG")
-        co.selectCurrentFindAddressBtn()
-
-        # Enter current address month and year
-        co.enterCurrentAddressMonth("10")
-        co.enterCurrentAddressYear("2021")
+        # Enter current address and find address. Enter current address month and year.
+        co.enter_current_address("44", "IG3 9JG", "10", "2021")
 
         time.sleep(2)
 
-        # Enter previous address and find address
-        co.enterPreviousAddressLine("42")
-        co.enterPreviousAddressPostcode("IG3 9JG")
-        co.selectPreviousAddressBtn()
+        # Enter previous address and find address. Enter previous address month and year.
+        co.enter_previous_address("42", "IG3 9JG", "10", "2018")
 
-        # Enter previous address month and year
-        co.enterPreviousAddressMonth("10")
-        co.enterPreviousAddressYear("2018")
+        time.sleep(2)
 
-        co.enterPwField("Test0001")
-        co.enterConfirmPwField("Test0001")
-        co.selectShowHidePwBtn()
+        co.enter_pw_field("Test0001")
+        co.enter_confirm_pw_field("Test0001")
+        co.select_show_hide_pw_btn()
 
-        co.selectSecurityQuestion()
+        co.select_security_question()
 
         time.sleep(3)
 
-        co.enterSecurityAnswer("red")
+        co.enter_security_answer("red")
 
         time.sleep(2)
 
-        co.selectSecurityHideShowBtn()
+        co.select_security_hide_show_btn()
 
         time.sleep(2)
 

@@ -18,42 +18,41 @@ class HomePage(BaseDriver):
     MANAGE_SAVE_PREFERENCES_BTN = "//*[@id='preferences_prompt_submit']"
     SEARCH_BAR_FIELD = "search"
 
-
-    def getAcceptCookiesBtn(self):
+    def get_accept_cookies_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.ACCEPT_COOKIES_BTN)
 
-    def getManageCookiesBtn(self):
+    def get_manage_cookies_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_COOKIES_BTN)
 
-    def getManageExperienceBtn(self):
+    def get_manage_experience_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_EXPERIENCE_BTN)
 
-    def getManageAdvertisingBtn(self):
+    def get_manage_advertising_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_ADVERTISING_BTN)
 
-    def getManageSavePreferencesBtn(self):
+    def get_manage_save_preferences_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.MANAGE_SAVE_PREFERENCES_BTN)
 
-    def getSearchBarField(self):
+    def get_search_bar_field(self):
         return self.wait_until_element_is_clickable(By.ID, self.SEARCH_BAR_FIELD)
 
-    def selectAcceptCookiesBtn(self):
-        self.getAcceptCookiesBtn().click()
+    def select_accept_cookies_btn(self):
+        self.get_accept_cookies_btn().click()
 
-    def selectManageCookiesBtn(self):
-        self.getManageCookiesBtn().click()
+    def select_manage_cookies_btn(self):
+        self.get_manage_cookies_btn().click()
 
-    def selectManageExperienceBtn(self):
-        self.getManageExperienceBtn().click()
+    def select_manage_experience_btn(self):
+        self.get_manage_experience_btn().click()
 
-    def selectManageAdvertisingBtn(self):
-        self.getManageAdvertisingBtn().click()
+    def select_manage_advertising_btn(self):
+        self.get_manage_advertising_btn().click()
 
-    def selectManageSavePreferencesBtn(self):
-        self.getManageSavePreferencesBtn().click()
+    def select_manage_save_preferences_btn(self):
+        self.get_manage_save_preferences_btn().click()
 
-    def enterSearchBarField(self, searchbar):
-        self.getSearchBarField().send_keys(searchbar)
-        self.getSearchBarField().send_keys(Keys.ENTER)
+    def enter_search_bar_field(self, searchbar):
+        self.get_search_bar_field().send_keys(searchbar)
+        self.get_search_bar_field().send_keys(Keys.ENTER)
 
 

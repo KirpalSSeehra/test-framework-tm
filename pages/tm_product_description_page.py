@@ -25,65 +25,65 @@ class ProductDescriptionPage(BaseDriver):
     EXISTING_CUSTOMER_PW_FIELD = "//input[contains(@id, 'pass')]"
     EXISTING_CUSTOMER_LOGIN_BTN = "//button[@id='send2']"
 
-    def getDeviceColourBtn(self):
+    def get_device_colour_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.DEVICE_COLOUR_BTN)
 
-    def selectDeviceColourBtn(self):
-        self.driver.execute_script("arguments[0].click();", self.getDeviceColourBtn())
+    def select_device_colour_btn(self):
+        self.driver.execute_script("arguments[0].click();", self.get_device_colour_btn())
 
-    def getDeviceStorageBtn(self):
+    def get_device_storage_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.DEVICE_STORAGE_BTN)
 
-    def selectDeviceStorageBtn(self):
-        self.driver.execute_script("arguments[0].click();", self.getDeviceStorageBtn())
+    def select_device_storage_btn(self):
+        self.driver.execute_script("arguments[0].click();", self.get_device_storage_btn())
 
-    def getTariffSelectorBtn(self):
+    def get_tariff_selector_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.TARIFF_SELECTOR_BTN)
 
-    def selectTariffSelectorBtn(self):
-        self.driver.execute_script("arguments[0].click();", self.getTariffSelectorBtn())
+    def select_tariff_selector_btn(self):
+        self.driver.execute_script("arguments[0].click();", self.get_tariff_selector_btn())
 
-    def getAddToBasketBtn(self):
+    def get_add_to_basket_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.ADD_TO_BASKET_BTN)
 
-    def selectAddToBasketBtn(self):
-        self.driver.execute_script("arguments[0].click();", self.getAddToBasketBtn())
+    def select_add_to_basket_btn(self):
+        self.driver.execute_script("arguments[0].click();", self.get_add_to_basket_btn())
 
-    def getAbAddToBasketBtn(self):
+    def get_ab_add_to_basket_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.AB_ADD_TO_BASKET_BTN)
 
-    def selectAbAddToBasketBtn(self):
-        self.getAbAddToBasketBtn().click()
+    def select_ab_add_to_basket_btn(self):
+        self.get_ab_add_to_basket_btn().click()
 
-    def getNewCustomerBtn(self):
+    def get_new_customer_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.NEW_CUSTOMER_BTN)
 
-    def selectNewCustomerBtn(self):
-        self.getNewCustomerBtn().click()
+    def select_new_customer_btn(self):
+        self.get_new_customer_btn().click()
 
-    def getExistingCustomerBtn(self):
+    def get_existing_customer_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_BTN)
 
-    def selectExistingCustomerBtn(self):
-        self.getExistingCustomerBtn().click()
+    def select_existing_customer_btn(self):
+        self.get_existing_customer_btn().click()
 
-    def getExistingCustomerEmailField(self):
+    def get_existing_customer_email_field(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_EMAIL_FIELD)
 
-    def enterExistingCustomerEmailField(self, customer_email):
-        self.getExistingCustomerEmailField().send_keys(customer_email)
+    def enter_existing_customer_email_field(self, customer_email):
+        self.get_existing_customer_email_field().send_keys(customer_email)
 
-    def getExistingCustomerPwField(self):
+    def get_existing_customer_pw_field(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_PW_FIELD)
 
-    def enterExistingCustomerPwField(self, customer_pw):
-        self.getExistingCustomerPwField().send_keys(customer_pw)
+    def enter_existing_customer_pw_field(self, customer_pw):
+        self.get_existing_customer_pw_field().send_keys(customer_pw)
 
-    def getExistingCustomerLoginBtn(self):
+    def get_existing_customer_login_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_LOGIN_BTN)
 
-    def selectExistingCustomerLoginBtn(self):
-        self.getExistingCustomerLoginBtn().click()
+    def select_existing_customer_login_btn(self):
+        self.get_existing_customer_login_btn().click()
 
 
 

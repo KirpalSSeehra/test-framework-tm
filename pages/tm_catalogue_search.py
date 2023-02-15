@@ -15,8 +15,8 @@ class CatalogueSearch(BaseDriver):
     # Locators
     SELECT_DEVICE_ITEM = "//*[@id='instant-search-results-container']/div/div/ol/li[1]/div/div/a"
 
-    def getDeviceItem(self):
+    def get_device_item(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.SELECT_DEVICE_ITEM)
 
-    def selectDeviceItem(self):
-        self.getDeviceItem().click()
+    def select_device_item(self):
+        self.get_device_item().click()
