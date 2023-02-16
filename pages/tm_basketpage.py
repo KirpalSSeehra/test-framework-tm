@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from base.base_driver import BaseDriver
+from pages.tm_checkoutpage import CheckoutPage
 
 
 class BasketPage(BaseDriver):
@@ -96,3 +97,5 @@ class BasketPage(BaseDriver):
 
     def select_go_to_checkout_btn(self):
         self.get_go_to_checkout_btn().click()
+        checkout_page = CheckoutPage(self.driver)
+        return checkout_page

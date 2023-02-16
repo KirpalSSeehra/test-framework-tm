@@ -5,6 +5,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from base.base_driver import BaseDriver
 from selenium.webdriver.support import expected_conditions as EC
 
+from pages.tm_basketpage import BasketPage
+
+
 # Comment to update GH token
 
 class ProductDescriptionPage(BaseDriver):
@@ -60,6 +63,8 @@ class ProductDescriptionPage(BaseDriver):
 
     def select_new_customer_btn(self):
         self.get_new_customer_btn().click()
+        basket_page = BasketPage(self.driver)
+        return basket_page
 
     def get_existing_customer_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.EXISTING_CUSTOMER_BTN)

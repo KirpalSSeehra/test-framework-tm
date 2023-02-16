@@ -1,75 +1,54 @@
 import time
 
 import pytest
-
-from pages.tm_basketpage import BasketPage
-from pages.tm_checkoutpage import CheckoutPage
 from pages.tm_homepage import HomePage
-from pages.tm_catalogue_search import CatalogueSearch
 from pages.tm_product_description_page import ProductDescriptionPage
 
 
 @pytest.mark.usefixtures("setup")
 class TestNewCustomer():
-    def test_purchase_device(self):
+    @pytest.fixture(autouse=True)
+    def class_setup(self):
+        self.hp = HomePage(self.driver)
+        self.pdp = ProductDescriptionPage(self.driver)
 
-        hp = HomePage(self.driver)
-        cs = CatalogueSearch(self.driver)
-        pdp = ProductDescriptionPage(self.driver)
-        bp = BasketPage(self.driver)
-        co = CheckoutPage(self.driver)
-
+    def test_new_customer_journey_e2e(self):
         # Accept cookies
-        hp.select_accept_cookies_btn()
-
-        # Manage cookies
-        # hp.select_manage_cookies_btn()
-        # hp.select_manage_experience_btn()
-        # time.sleep(1)
-        # hp.select_manage_advertising_btn()
-        # time.sleep(1)
-        # hp.select_manage_save_preferences_btn()
-        # time.sleep(1)
+        self.hp.select_accept_cookies_btn()
 
         # Scroll down to bottom of page
         # hp.page_scroll()
 
         # Search for device
-        hp.enter_search_bar_field("iphone 13")
-
-        # # Scroll down to bottom of page
-        # cs.page_scroll()
+        catalogue_search = self.hp.enter_search_bar_field("iphone 13")
 
         # Select first carousel item
-        cs.select_device_item()
+        catalogue_search.select_device_item()
 
         # Zoom out of page
         # pdp.page_zoom()
 
-        # Scroll to bottom of pdp page
-        # pdp.page_scroll()
-
         time.sleep(2)
 
         # Select device colour
-        pdp.select_device_colour_btn()
+        self.pdp.select_device_colour_btn()
 
         time.sleep(2)
 
         # Select device storage
         # pdp.selectDeviceStorageBtn()
 
-        pdp.select_tariff_selector_btn()
+        self.pdp.select_tariff_selector_btn()
 
         time.sleep(2)
 
         # Add to basket
-        pdp.select_add_to_basket_btn()
+        self.pdp.select_add_to_basket_btn()
 
         # New customer button click
-        pdp.select_new_customer_btn()
+        basket_page = self.pdp.select_new_customer_btn()
 
-        # Existing button click
+        # Existing customer button click
         # pdp.selectExistingCustomerBtn()
 
         # Enter existing customer details
@@ -81,80 +60,101 @@ class TestNewCustomer():
         # time.sleep(2)
 
         # Selecting insurance options
-        bp.select_full_cover_btn()
+        basket_page.select_full_cover_btn()
         time.sleep(2)
-        bp.select_insurance_policy_continue_btn()
+        basket_page.select_insurance_policy_continue_btn()
         time.sleep(2)
 
         # Change contract
-        # bp.select_change_phone_contract_btn()
+        # basket_page.select_change_phone_contract_btn()
 
         # Change safety buffer
-        # bp.select_change_safety_buffer_btn()
+        # basket_page.select_change_safety_buffer_btn()
 
         # Change insurance
-        # bp.select_change_insurance_btn()
+        # basket_page.select_change_insurance_btn()
         # time.sleep(2)
-        # bp.select_full_cover_btn()
+        # basket_page.select_full_cover_btn()
         # time.sleep(2)
-        # bp.select_no_insurance_policy_continue_btn()
+        # basket_page.select_no_insurance_policy_continue_btn()
         # time.sleep(2)
 
         # checkout button
-        bp.select_go_to_checkout_btn()
+        checkout_page = basket_page.select_go_to_checkout_btn()
 
         # Enter email address and confirm email
-        co.enter_email_twice("kirpal-seehra@hotmail.co.uk", "kirpal-seehra@hotmail.co.uk")
+        checkout_page.enter_email_twice("kirpal-seehra@hotmail.co.uk", "kirpal-seehra@hotmail.co.uk")
 
         # Select title
-        co.select_title()
+        checkout_page.select_title()
 
         # Enter Fullname
-        co.enter_full_name("Kirpal", "Seehra")
+        checkout_page.enter_full_name("Kirpal", "Seehra")
 
         # Enter DOB
-        co.enter_dob("03", "10", "1994")
-
-        # Check Account Type Selected
-        # co.check_type_of_account_selected()
+        checkout_page.enter_dob("03", "10", "1994")
 
         time.sleep(2)
 
         # Select Account Type
-        # co.select_type_of_account()
+        # checkout_page.select_type_of_account()
 
-        # co.click_execute_script()
+        # checkout_page.click_execute_script()
 
         time.sleep(2)
 
         # Enter Contact Number
-        co.enter_contact_number("07940490912")
+        checkout_page.enter_contact_number("07940490912")
 
         # Enter current address and find address. Enter current address month and year.
-        co.enter_current_address("44", "IG3 9JG", "10", "2021")
+        checkout_page.enter_current_address("44", "IG3 9JG", "10", "2021")
 
         time.sleep(2)
 
         # Enter previous address and find address. Enter previous address month and year.
-        co.enter_previous_address("42", "IG3 9JG", "10", "2018")
+        checkout_page.enter_previous_address("42", "IG3 9JG", "10", "2018")
 
         time.sleep(2)
 
-        co.enter_pw_field("Test0001")
-        co.enter_confirm_pw_field("Test0001")
-        co.select_show_hide_pw_btn()
+        checkout_page.enter_pw_field("Test0001")
+        checkout_page.enter_confirm_pw_field("Test0001")
+        checkout_page.select_show_hide_pw_btn()
 
-        co.select_security_question()
+        checkout_page.select_security_question()
 
         time.sleep(3)
 
-        co.enter_security_answer("red")
+        checkout_page.enter_security_answer("red")
 
         time.sleep(2)
 
-        co.select_security_hide_show_btn()
+        checkout_page.select_security_hide_show_btn()
 
-        time.sleep(2)
+        time.sleep(5)
 
+    def test_existing_customer_journey_e2e(self):
 
+        self.hp.select_manage_cookies_btn()
+        self.hp.select_manage_experience_btn()
+        time.sleep(1)
+        self.hp.select_manage_advertising_btn()
+        time.sleep(1)
+        self.hp.select_manage_save_preferences_btn()
+        time.sleep(1)
 
+        catalogue_search = self.hp.enter_search_bar_field("iphone 13")
+        catalogue_search.select_device_item()
+
+        self.pdp.select_device_colour_btn()
+        self.pdp.select_tariff_selector_btn()
+        time.sleep(1)
+        self.pdp.select_add_to_basket_btn()
+
+        # Existing customer button click
+        self.pdp.select_existing_customer_btn()
+
+        # Enter existing customer details
+        self.pdp.enter_existing_customer_email_field("kirpal-seehra@hotmail.co.uk")
+        self.pdp.enter_existing_customer_pw_field("kips1994")
+        self.pdp.select_existing_customer_login_btn()
+        time.sleep(5)

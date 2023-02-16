@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 from base.base_driver import BaseDriver
+from pages.tm_catalogue_search import CatalogueSearch
 
 
 class HomePage(BaseDriver):
@@ -54,5 +55,7 @@ class HomePage(BaseDriver):
     def enter_search_bar_field(self, searchbar):
         self.get_search_bar_field().send_keys(searchbar)
         self.get_search_bar_field().send_keys(Keys.ENTER)
+        catalogue_search = CatalogueSearch(self.driver)
+        return catalogue_search
 
 
