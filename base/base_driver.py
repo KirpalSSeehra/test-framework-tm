@@ -41,3 +41,9 @@ class BaseDriver:
         wait = WebDriverWait(self.driver, 20)
         click_execute = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, 'ko_unique_6')]")))
         self.driver.execute_script("arguments[0].click();", click_execute)
+
+    def wait_for_presence_of_all_elements(self, locator_type, locator):
+        wait = WebDriverWait(self.driver, 20)
+        list_of_elements = wait.until(EC.presence_of_all_elements_located((locator_type, locator)))
+        return list_of_elements
+

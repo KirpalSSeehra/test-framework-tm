@@ -1,6 +1,8 @@
 import time
 
 import pytest
+from selenium.webdriver.common.by import By
+
 from pages.tm_homepage import HomePage
 from pages.tm_product_description_page import ProductDescriptionPage
 
@@ -21,6 +23,17 @@ class TestNewCustomer():
 
         # Search for device
         catalogue_search = self.hp.enter_search_bar_field("iphone 13")
+
+        all_devices = catalogue_search.wait_for_presence_of_all_elements(By.XPATH, "//h3[contains(text(), '13')]")
+        print(len(all_devices))
+
+        for device in all_devices:
+            print("The device text is " + device.text)
+            assert device.text == "iPhone 13" or "Galaxy A13" or "Galaxy A13 With Chromebook 4"
+            print("assert pass")
+
+        time.sleep(2)
+
 
         # Select first carousel item
         catalogue_search.select_device_item()
