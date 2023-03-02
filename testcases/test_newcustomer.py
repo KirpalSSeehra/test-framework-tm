@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 from pages.tm_homepage import HomePage
 from pages.tm_product_description_page import ProductDescriptionPage
+from utilities.utils import Utils
 
 
 @pytest.mark.usefixtures("setup")
@@ -13,6 +14,7 @@ class TestNewCustomer():
     def class_setup(self):
         self.hp = HomePage(self.driver)
         self.pdp = ProductDescriptionPage(self.driver)
+        self.ut = Utils
 
     def test_new_customer_journey_e2e(self):
         # Accept cookies
@@ -27,10 +29,7 @@ class TestNewCustomer():
         all_devices = catalogue_search.wait_for_presence_of_all_elements(By.XPATH, "//h3[contains(text(), '13')]")
         print(len(all_devices))
 
-        for device in all_devices:
-            print("The device text is " + device.text)
-            assert device.text == "iPhone 13" or "Galaxy A13" or "Galaxy A13 With Chromebook 4"
-            print("assert pass")
+        self.ut.assert_list_item_text(all_devices, "iPhone 13")
 
         time.sleep(2)
 
