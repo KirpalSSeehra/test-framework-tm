@@ -27,6 +27,9 @@ class ProductDescriptionPage(BaseDriver):
     EXISTING_CUSTOMER_EMAIL_FIELD = "//input[contains(@id, 'customer-email')]"
     EXISTING_CUSTOMER_PW_FIELD = "//input[contains(@id, 'pass')]"
     EXISTING_CUSTOMER_LOGIN_BTN = "//button[@id='send2']"
+    ALT_NEW_CUSTOMER_BTN = "//*[@id='button-container-820']/button[3]"
+    PAY_MONTHLY_CUSTOMER_BTN = "//*[@id='button-container-820']/button[1]"
+    PAY_AS_YOU_GO_CUSTOMER_BTN = "//*[@id='button-container-820']/button[2]"
 
     def get_device_colour_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.DEVICE_COLOUR_BTN)
@@ -90,6 +93,29 @@ class ProductDescriptionPage(BaseDriver):
     def select_existing_customer_login_btn(self):
         self.get_existing_customer_login_btn().click()
 
+    def get_alternative_new_customer_btn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.ALT_NEW_CUSTOMER_BTN)
+
+    def select_alternative_new_customer_btn(self):
+        self.get_alternative_new_customer_btn().click()
+        basket_page = BasketPage(self.driver)
+        return basket_page
+
+    def get_pay_monthly_customer_btn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.PAY_MONTHLY_CUSTOMER_BTN)
+
+    def select_pay_monthly_customer_btn(self):
+        self.get_pay_monthly_customer_btn().click()
+        # basket_page = BasketPage(self.driver)
+        # return basket_page
+
+    def get_pay_as_you_go_customer_btn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.PAY_AS_YOU_GO_CUSTOMER_BTN)
+
+    def select_pay_as_you_go_customer_btn(self):
+        self.get_pay_as_you_go_customer_btn().click()
+        # basket_page = BasketPage(self.driver)
+        # return basket_page
 
 
 

@@ -61,17 +61,6 @@ class TestNewCustomer():
         # New customer button click
         basket_page = self.pdp.select_new_customer_btn()
 
-        # Existing customer button click
-        # pdp.selectExistingCustomerBtn()
-
-        # Enter existing customer details
-        # Need to deal with bot pop up thing
-        # pdp.enterExistingCustomerEmailField("kirpal-seehra@hotmail.co.uk")
-        # pdp.enterExistingCustomerPwField("kips1994")
-        # time.sleep(2)
-        # pdp.selectExistingCustomerLoginBtn()
-        # time.sleep(2)
-
         # Selecting insurance options
         basket_page.select_full_cover_btn()
         time.sleep(2)
