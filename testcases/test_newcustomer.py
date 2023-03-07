@@ -1,6 +1,7 @@
 import time
 
 import pytest
+import softest
 from selenium.webdriver.common.by import By
 
 from pages.tm_homepage import HomePage
@@ -14,7 +15,7 @@ class TestNewCustomer():
     def class_setup(self):
         self.hp = HomePage(self.driver)
         self.pdp = ProductDescriptionPage(self.driver)
-        self.ut = Utils
+        # self.ut = Utils()
 
     def test_new_customer_journey_e2e(self):
         # Accept cookies
@@ -26,13 +27,13 @@ class TestNewCustomer():
         # Search for device
         catalogue_search = self.hp.enter_search_bar_field("iphone 13")
 
-        all_devices = catalogue_search.wait_for_presence_of_all_elements(By.XPATH, "//h3[contains(text(), '13')]")
+        all_devices = catalogue_search.wait_for_presence_of_all_elements(By.XPATH, "//h3[contains(text(),'13')]")
         print(len(all_devices))
 
-        self.ut.assert_list_item_text(all_devices, "iPhone 13")
+        ut = Utils()
+        ut.assert_list_item_text(all_devices)
 
         time.sleep(2)
-
 
         # Select first carousel item
         catalogue_search.select_device_item()
