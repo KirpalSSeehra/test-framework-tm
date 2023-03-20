@@ -10,12 +10,12 @@ from utilities.utils import Utils
 
 
 @pytest.mark.usefixtures("setup")
-class TestNewCustomer():
+class TestNewCustomer(softest.TestCase):
     @pytest.fixture(autouse=True)
     def class_setup(self):
         self.hp = HomePage(self.driver)
         self.pdp = ProductDescriptionPage(self.driver)
-        # self.ut = Utils()
+        self.ut = Utils()
 
     def test_new_customer_journey_e2e(self):
         # Accept cookies
@@ -30,8 +30,7 @@ class TestNewCustomer():
         all_devices = catalogue_search.wait_for_presence_of_all_elements(By.XPATH, "//h3[contains(text(),'13')]")
         print(len(all_devices))
 
-        ut = Utils()
-        ut.assert_list_item_text(all_devices)
+        self.ut.assert_in_list_item_text(all_devices, "13")
 
         time.sleep(2)
 
@@ -131,7 +130,11 @@ class TestNewCustomer():
         time.sleep(2)
 
         checkout_page.select_security_hide_show_btn()
+        checkout_page.enter_clubcard_number("634004024066936008")
+        checkout_page.select_terms_conditions_agreement_checkbox()
+        time.sleep(5)
 
+        checkout_page.select_about_you_confirm_btn()
         time.sleep(5)
 
     def test_existing_customer_journey_e2e(self):

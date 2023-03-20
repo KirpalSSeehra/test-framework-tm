@@ -40,6 +40,9 @@ class CheckoutPage(BaseDriver):
     SECURITY_QUESTION_DROPDOWN = "//select[@name='account[tm_security_question]']"
     SECURITY_ANSWER_FIELD = "account[tm_security_answer]"
     SECURITY_ANSWER_SHOW_HIDE_BTN = "//a[contains(@data-bind, 'click: showHideAnswer')]"
+    CLUBCARD_NUMBER_FIELD = "tm_clubcard_number"
+    TERMS_CONDITIONS_AGREEMENT_CHECKBOX = "//*[@id='agreement_3']"
+    ABOUT_YOU_CONFIRM_BTN = "//*[@id='about-buttons-container']/div/button"
 
     # Get Methods
     def get_email_address_field(self):
@@ -113,6 +116,15 @@ class CheckoutPage(BaseDriver):
 
     def get_security_answer_hide_show_btn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.SECURITY_ANSWER_SHOW_HIDE_BTN)
+
+    def get_clubcard_number_field(self):
+        return self.wait_until_element_is_clickable(By.NAME, self.CLUBCARD_NUMBER_FIELD)
+
+    def get_terms_conditions_agreement_checkbox(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.TERMS_CONDITIONS_AGREEMENT_CHECKBOX)
+
+    def get_about_you_confirm_btn(self):
+        return self.wait_until_element_is_clickable(By.XPATH, self.ABOUT_YOU_CONFIRM_BTN)
 
     # Methods to perform actions on get methods
 
@@ -200,6 +212,15 @@ class CheckoutPage(BaseDriver):
 
     def select_security_hide_show_btn(self):
         self.get_security_answer_hide_show_btn().click()
+
+    def enter_clubcard_number(self, clubcardnumber):
+        self.get_clubcard_number_field().send_keys(clubcardnumber)
+
+    def select_terms_conditions_agreement_checkbox(self):
+        self.get_terms_conditions_agreement_checkbox().click()
+
+    def select_about_you_confirm_btn(self):
+        self.get_about_you_confirm_btn().click()
 
 
     def enter_email_twice(self, emailaddress, confirmemail):

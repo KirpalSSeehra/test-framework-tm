@@ -1,7 +1,13 @@
-class Utils():
-    def assert_list_item_text(self, list):
+import softest
+
+
+class Utils(softest.TestCase):
+    def assert_in_list_item_text(self, list, value):
         for device in list:
             print("The device text is " + device.text)
-            assert device.text == "iPhone 13" or "Galaxy A13" or "Galaxy A13 With Chromebook 4"
-            print("assert pass")
-
+            self.soft_assert(self.assertIn, value, device.text)
+            if value in device.text:
+                print("assert pass")
+            else:
+                print("assert failed")
+        self.assert_all()
