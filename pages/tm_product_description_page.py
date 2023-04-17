@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.tm_basketpage import BasketPage
 
 
-# Comment to update GH token
+# Comment to update GH token again
 
 class ProductDescriptionPage(BaseDriver):
 
@@ -19,7 +19,7 @@ class ProductDescriptionPage(BaseDriver):
     # Locators
     DEVICE_COLOUR_BTN = "//*[@id='tm-deal-device-wrapper']/div[1]/div/div[1]/div/div[4]"
     DEVICE_STORAGE_BTN = "//span[contains(text(),'256GB')]"
-    TARIFF_SELECTOR_BTN = "//*[@id='bundle-option-14701-40651']"
+    TARIFF_SELECTOR_BTN = "//*[@id='product-options-wrapper']/div/fieldset[1]/div[4]/div/div[1]/div/div[12]/label"
     ADD_TO_BASKET_BTN = "//*[@id='product-addtocart-button']"
     AB_ADD_TO_BASKET_BTN = "//*[@id='emulate-button-pay-monthly']" #AB = Action Bar
     NEW_CUSTOMER_BTN = "//button[contains(@data-bind, 'click: isNewCustomer')]"
@@ -116,6 +116,4 @@ class ProductDescriptionPage(BaseDriver):
         self.get_pay_as_you_go_customer_btn().click()
         # basket_page = BasketPage(self.driver)
         # return basket_page
-
-
 
