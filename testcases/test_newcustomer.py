@@ -7,15 +7,24 @@ from selenium.webdriver.common.by import By
 from pages.tm_homepage import HomePage
 from pages.tm_product_description_page import ProductDescriptionPage
 from utilities.utils import Utils
+from ddt import ddt, data, file_data, unpack
 
 
 @pytest.mark.usefixtures("setup")
+@ddt
 class TestNewCustomer(softest.TestCase):
     @pytest.fixture(autouse=True)
     def class_setup(self):
         self.hp = HomePage(self.driver)
         self.pdp = ProductDescriptionPage(self.driver)
         self.ut = Utils()
+
+    @file_data("../testdata/testdata.json")
+    def test_ddt_search_json(self, search_result):
+        self.hp.select_accept_cookies_btn()
+        catalogue_search = self.hp.enter_search_bar_field(search_result)
+        catalogue_search.select_device_item()
+        time.sleep(2)
 
     def test_new_customer_journey_e2e(self):
         # Accept cookies
