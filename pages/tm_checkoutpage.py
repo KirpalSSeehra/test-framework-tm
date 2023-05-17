@@ -19,9 +19,9 @@ class CheckoutPage(BaseDriver):
     # SELECT_TITLE_BTN = ""
     FIRST_NAME_FIELD = "customer[firstname]"
     LAST_NAME_FIELD = "customer[lastname]"
-    DOB_DATE_FIELD = "customer-day"
-    DOB_MONTH_FIELD = "customer-month"
-    DOB_YEAR_FIELD = "customer-year"
+    DOB_DATE_FIELD = "customer[dob][day]"
+    DOB_MONTH_FIELD = "customer[dob][month]"
+    DOB_YEAR_FIELD = "customer[dob][year]"
     # SELECT_ACCOUNT_TYPE_BTN
     CONTACT_NO_FIELD = "customer[tm_contact_number]"
     CURRENT_ADDRESS_LINE_FIELD = "billing_address[tm_building_id]"
@@ -31,7 +31,7 @@ class CheckoutPage(BaseDriver):
     CURRENT_ADDRESS_YEAR_FIELD = "billing_address[tm_start_date][year]"
     PREVIOUS_ADDRESS_LINE_FIELD = "previous_address[tm_building_id]"
     PREVIOUS_POSTCODE_FIELD = "previous_address[postcode]"
-    FIND_PREVIOUS_ADDRESS_BTN = "//*[@id='about-form']/fieldset[2]/div[4]/a"
+    FIND_PREVIOUS_ADDRESS_BTN = "//*[@id='about-form']/fieldset[3]/div[4]"
     PREVIOUS_ADDRESS_MONTH_FIELD = "previous_address[tm_start_date][month]"
     PREVIOUS_ADDRESS_YEAR_FIELD = "previous_address[tm_start_date][year]"
     CREATE_PW_FIELD = "customer-password"
@@ -58,13 +58,13 @@ class CheckoutPage(BaseDriver):
         return self.wait_until_element_is_clickable(By.NAME, self.LAST_NAME_FIELD)
 
     def get_dob_date_field(self):
-        return self.wait_until_element_is_clickable(By.ID, self.DOB_DATE_FIELD)
+        return self.wait_until_element_is_clickable(By.NAME, self.DOB_DATE_FIELD)
 
     def get_dob_month_field(self):
-        return self.wait_until_element_is_clickable(By.ID, self.DOB_MONTH_FIELD)
+        return self.wait_until_element_is_clickable(By.NAME, self.DOB_MONTH_FIELD)
 
     def get_dob_year_field(self):
-        return self.wait_until_element_is_clickable(By.ID, self.DOB_YEAR_FIELD)
+        return self.wait_until_element_is_clickable(By.NAME, self.DOB_YEAR_FIELD)
 
     def get_contact_number_field(self):
         return self.wait_until_element_is_clickable(By.NAME, self.CONTACT_NO_FIELD)
