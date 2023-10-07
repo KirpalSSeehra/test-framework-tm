@@ -13,7 +13,7 @@ driver = None
 def setup(request, browser, url):
     global driver
     if browser == "chrome":
-        driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+        driver = webdriver.Chrome(executable_path=ChromeDriverManager(version="114.0.5735.90").install())
     elif browser == "firefox":
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     elif browser == "edge":
